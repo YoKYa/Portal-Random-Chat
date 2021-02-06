@@ -24,6 +24,7 @@
                 <a href="#" class="block text-gray-300 hover:text-white px-4 md:py-4">Chats</a>
                 <a href="#" class="block text-gray-300 hover:text-white px-4 md:py-4">Group Chats</a>
                 <a href="#" class="block text-gray-300 hover:text-white px-4 md:py-4">About Us</a>
+                <a href="#" class="block text-gray-300 hover:text-white px-4 md:py-4">Help</a>
             </div>
             <div class="flex md:items-center flex-col md:flex-row">
                 @auth
