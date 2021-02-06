@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "10c2c214db4f2d885a0a79da514a275a",
+    "content-hash": "2b0e33aefee80664d10d42531eddcd02",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -893,6 +893,77 @@
             "time": "2020-09-30T07:37:11+00:00"
         },
         {
+            "name": "laravel-frontend-presets/tall",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel-frontend-presets/tall.git",
+                "reference": "17838bad048ca1adf336bd99d56b0858af3ca020"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel-frontend-presets/tall/zipball/17838bad048ca1adf336bd99d56b0858af3ca020",
+                "reference": "17838bad048ca1adf336bd99d56b0858af3ca020",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "laravel/ui": "^3.0",
+                "php": "^7.2.5|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "LaravelFrontendPresets\\Tall\\TallServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "LaravelFrontendPresets\\Tall\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dan Harrin",
+                    "email": "Dan@DanHarrin.com"
+                },
+                {
+                    "name": "Liam Hammett",
+                    "email": "liam@liamhammett.com"
+                },
+                {
+                    "name": "Ryan Chandler",
+                    "email": "support@ryangjchandler.co.uk"
+                }
+            ],
+            "description": "TALL preset for Laravel.",
+            "keywords": [
+                "alpine",
+                "alpinejs",
+                "laravel",
+                "livewire",
+                "preset",
+                "tailwind",
+                "tailwindcss",
+                "tailwindui",
+                "tall"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel-frontend-presets/tall/issues",
+                "source": "https://github.com/laravel-frontend-presets/tall"
+            },
+            "time": "2021-01-15T09:50:21+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v8.25.0",
             "source": {
@@ -1127,6 +1198,64 @@
                 "source": "https://github.com/laravel/tinker/tree/v2.6.0"
             },
             "time": "2021-01-26T20:35:18+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/a1f82c6283c8373ea1958b8a27c3d5c98cade351",
+                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^8.0",
+                "illuminate/filesystem": "^8.0",
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/",
+                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/ui/issues",
+                "source": "https://github.com/laravel/ui/tree/v3.2.0"
+            },
+            "time": "2021-01-06T19:20:22+00:00"
         },
         {
             "name": "league/commonmark",
@@ -1382,16 +1511,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.3.8",
+            "version": "v2.3.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "c661e295428b2baaff04320d0a9424db5ca72be5"
+                "reference": "3ead3ff1342d9b17c7fd3559fd1a5f880cf78f28"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/c661e295428b2baaff04320d0a9424db5ca72be5",
-                "reference": "c661e295428b2baaff04320d0a9424db5ca72be5",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/3ead3ff1342d9b17c7fd3559fd1a5f880cf78f28",
+                "reference": "3ead3ff1342d9b17c7fd3559fd1a5f880cf78f28",
                 "shasum": ""
             },
             "require": {
@@ -1442,7 +1571,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.3.8"
+                "source": "https://github.com/livewire/livewire/tree/v2.3.14"
             },
             "funding": [
                 {
@@ -1450,7 +1579,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-21T14:01:48+00:00"
+            "time": "2021-02-03T23:14:23+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5433,64 +5562,6 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2021-01-26T19:38:10+00:00"
-        },
-        {
-            "name": "laravel/ui",
-            "version": "v3.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/laravel/ui.git",
-                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/a1f82c6283c8373ea1958b8a27c3d5c98cade351",
-                "reference": "a1f82c6283c8373ea1958b8a27c3d5c98cade351",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/console": "^8.0",
-                "illuminate/filesystem": "^8.0",
-                "illuminate/support": "^8.0",
-                "php": "^7.3|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Ui\\UiServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Ui\\": "src/",
-                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "Laravel UI utilities and presets.",
-            "keywords": [
-                "laravel",
-                "ui"
-            ],
-            "support": {
-                "issues": "https://github.com/laravel/ui/issues",
-                "source": "https://github.com/laravel/ui/tree/v3.2.0"
-            },
-            "time": "2021-01-06T19:20:22+00:00"
         },
         {
             "name": "mockery/mockery",
