@@ -15,7 +15,7 @@ class Welcome extends Component
     }
     public function join()
     {
-
+        dd($this->code);
     }
     public function render()
     {

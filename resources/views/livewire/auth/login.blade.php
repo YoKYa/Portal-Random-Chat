@@ -21,7 +21,7 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
-                <form wire:submit.prevent="authenticate">
+                <form wire:submit.prevent="authenticate" >
                 <div>
                     <label for="email" class="block text-sm font-medium text-gray-700 leading-5">
                         Email address
@@ -59,7 +59,7 @@
                     </div>
 
                     <div class="text-sm leading-5">
-                        <a href="{{ route('password.request') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150">
+                        <a href="{{ route('password.request') }}" class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150" data-turbolinks="false">
                             Forgot your password?
                         </a>
                     </div>
@@ -67,7 +67,7 @@
 
                 <div class="mt-6">
                     <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
+                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:ring-blue active:bg-blue-700 transition duration-150 ease-in-out" data-turbolinks="false">
                             Sign in
                         </button>
                     </span>

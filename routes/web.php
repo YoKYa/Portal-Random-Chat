@@ -9,6 +9,7 @@ use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Auth\Passwords\Confirm;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Http\Livewire\Account\Edit;
 use App\Http\Livewire\Home\Welcome;
 
 // Route::view('/', 'welcome')->name('home');
@@ -43,4 +44,8 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', LogoutController::class)
         ->name('logout');
+});
+
+Route::middleware('auth')->group(function (){
+    Route::get('setting', Edit::class)->name('account.edit');
 });

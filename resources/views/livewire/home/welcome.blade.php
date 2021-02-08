@@ -1,3 +1,4 @@
+@section('title', 'Welcome')
 <div class="flex flex-col justify-center min-h-full py-12 sm:px-6 lg:px-8">
     <div class="flex items-center justify-center my-5">
         <div class="flex flex-col justify-around">
@@ -17,7 +18,7 @@
     @auth
     <div class="mb-7">
         <div class="md:flex md:items-center md:justify-center my-3">
-            <form action="#" method="post" wire:submit.prevent="join">
+            <form action="#" wire:submit.prevent="join">
                 <div class="rounded-md bg-white shadow-md py-5 px-10 mx-3 ">
                     <input type="text" placeholder="Insert Code" wire:model="code" class="w-full">
                     <button
@@ -46,12 +47,12 @@
     <div class="flex justify-center items-center">
         <div class="md:flex rounded-md bg-white shadow-md py-5 px-10 mx-3 w-auto">
             <div class="my-5 md:my-0">Mau
-                <a href=""
+                <a href="{{ route('login') }}"
                     class="rounded-md bg-blue-900 text-white px-4 py-2 mx-2 hover:bg-blue-700 transition duration-200">Login</a>&nbsp;
             </div>
             <div class="my-5 w-full md:w-auto md:my-0">
                 Atau
-                <a href=""
+                <a href="{{ route('register') }}"
                     class="w-full rounded-md bg-blue-900 text-white px-4 py-2 mx-2 hover:bg-blue-700 transition duration-200">Daftar</a>
             </div>
             <div class="hidden md:block">
@@ -63,7 +64,7 @@
     @endif
     @error('code')
     <div
-        class="absolute bg-red-100 text-red-800 border-r-4 border-red-500 mt-4 ml-5 top-20 right-5 p-3 w-auto text-right">
+        class="absolute bg-red-100 text-red-800 border-l-4 border-red-500 mt-4 ml-5 top-20 left-5 p-3 w-auto text-left">
         {{ $message }}
     </div>
     @enderror
