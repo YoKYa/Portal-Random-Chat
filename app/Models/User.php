@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Chats\Chats;
+use App\Models\Chats\Gchats;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,5 +48,13 @@ class User extends Authenticatable
     public function gravatar($size = 150)
     {
         return $this->picture ? "/storage/{$this->picture}" : "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->email ) ) ) . "?d=&s=" . $size;
+    }
+    public function gchats()
+    {
+        return $this->belongsToMany(Gchats::class,'user_chat','user_id','gchat_id');
+    }
+    public function chats()
+    {
+        return $this->hasMany(Chats::class);
     }
 }

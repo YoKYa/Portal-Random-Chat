@@ -20,9 +20,9 @@
         <div class="md:flex md:items-center md:justify-center my-3">
             <form action="#" wire:submit.prevent="join">
                 <div class="rounded-md bg-white shadow-md py-5 px-10 mx-3 ">
-                    <input type="text" placeholder="Insert Code" wire:model="code" class="w-full">
+                    <input type="text" placeholder="Insert Code" wire:model="code" class="w-full border-gray-300 rounded-md" required>
                     <button
-                        class="w-full bg-gray-700 text-white hover:bg-gray-800 transition duration-200 rounded-md mt-3 py-2">Join</button>
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white transition duration-200 rounded-md mt-3 py-2 disabled:opacity-50 disabled:bg-blue-800 @error('code') cursor-not-allowed @enderror" @error('code') disabled @enderror>Join</button>
                 </div>
             </form>
         </div>

@@ -10,7 +10,7 @@ class Welcome extends Component
     public function updated($fields)
     {
         $this->validateOnly($fields, [
-            'code' => 'required||min:5',       
+            'code' => 'required||min:5',
         ]);
     }
     public function join()
