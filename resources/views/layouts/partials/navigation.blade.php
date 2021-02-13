@@ -42,7 +42,7 @@
                         Group Chats
                     </div>
                 </a>
-                <a href="#" class="block text-gray-300 hover:text-white px-4 md:py-4 flex items-center">
+                <a href="{{route('about')}}" class="block text-gray-300 hover:text-white px-4 md:py-4 flex items-center">
                     <div><svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                             fill="currentColor">
                             <path fill-rule="evenodd"

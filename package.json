@@ -1,27 +1,45 @@
 {
-    "private": true,
-    "scripts": {
-        "dev": "npm run development",
-        "development": "mix",
-        "watch": "mix watch",
-        "watch-poll": "mix watch -- --watch-options-poll=1000",
-        "hot": "mix watch --hot",
-        "prod": "npm run production",
-        "production": "mix --production"
-    },
-    "devDependencies": {
-        "@tailwindcss/forms": "^0.2",
-        "@tailwindcss/typography": "^0.3",
-        "alpinejs": "^2.8",
-        "laravel-mix": "^6.0.6",
-        "laravel-mix-tailwind": "^0.1",
-        "postcss": "^8.1.14",
-        "resolve-url-loader": "^3.1",
-        "sass": "^1.32",
-        "sass-loader": "^8.0",
-        "tailwindcss": "^2.0"
-    },
-    "dependencies": {
-        "turbolinks": "^5.2.0"
-    }
+  "private": true,
+  "scripts": {
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
+    "prod": "npm run production",
+    "production": "mix --production"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.2",
+    "@tailwindcss/typography": "^0.3",
+    "alpinejs": "^2.8",
+    "laravel-mix": "^6.0.6",
+    "laravel-mix-tailwind": "^0.1",
+    "postcss": "^8.1.14",
+    "resolve-url-loader": "^3.1",
+    "sass": "^1.32",
+    "sass-loader": "^8.0",
+    "tailwindcss": "^2.0"
+  },
+  "dependencies": {
+    "turbolinks": "^5.2.0"
+  },
+  "name": "Portal",
+  "description": "<p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\"></a></p>",
+  "version": "1.0.0",
+  "main": "tailwind.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YoKYa/Portal.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YoKYa/Portal/issues"
+  },
+  "homepage": "https://github.com/YoKYa/Portal#readme"
 }

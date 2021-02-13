@@ -12,6 +12,7 @@ use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Livewire\Account\Edit;
 use App\Http\Livewire\Chats\App;
 use App\Http\Livewire\Home\Welcome;
+use App\Http\Livewire\About\About;
 
 // Route::view('/', 'welcome')->name('home');
 Route::get('/', Welcome::class)->name('home');
@@ -50,4 +51,5 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function (){
     Route::get('setting', Edit::class)->name('account.edit');
     Route::get('chats', App::class)->name('chats.app');
+    Route::get('about', About::class)->name('about');
 });
