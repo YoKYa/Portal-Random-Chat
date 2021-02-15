@@ -15,6 +15,6 @@ class Chats extends Model
     }
     public function gchats()
     {
-        return $this->belongsTo(Gchats::class);
+        return $this->belongsTo(Gchats::class,'gchat_id');
     }
 }

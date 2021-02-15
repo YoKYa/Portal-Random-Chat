@@ -18,7 +18,7 @@
 
             </div>
         </div>
-        <div :class="{'hidden': !open}" class="leading-relaxed md:flex justify-between w-full items-center">
+        <div :class="{'hidden': !open}" class="leading-relaxed md:flex justify-between w-full items-center z-10">
             <div class="flex md:items-center flex-col md:flex-row border-b border-gray-200 md:border-b-0 py-2 md:py-0">
                 <a href="{{ route('chats.app') }}" class="block text-gray-300 hover:text-white px-4 md:py-4 flex items-center">
                     <div>
