@@ -17,6 +17,6 @@ class Gchats extends Model
     }
     public function chats()
     {
-        return $this->hasMany(Chats::class);
+        return $this->hasMany(Chats::class,'gchat_id');
     }
 }

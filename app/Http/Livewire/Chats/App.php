@@ -11,24 +11,28 @@ use Illuminate\Support\Facades\Auth;
 class App extends Component
 {
     public $chats_list = [];
-    protected $listeners = [
-        'load_chats' => 'loadChats',
-        'load_chat' => 'loadChat',
-    ];
+    public $user_list = [];
+    // protected $listeners = [
+    //     'load_chats' => 'loadChats',
+    //     'load_chat' => 'loadChat',
+    // ];
     public function mount()
     {
-        $list_gchats = Chats::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get()->groupBy('gchat_id');
-        foreach ($list_gchats as $key => $value) {
+        $ids = Auth::user()->gchats()->pluck('id');
+        $ids->push(auth()->id());
+        $chats = Chats::WhereIn('gchat_id',$ids)->latest()->get()->groupBy('gchat_id');
+        foreach ($chats as $key => $value) {
             $this->chats_list[$key] = $value->first()->gchats()->first();
         }
-    }
 
-    public function loadChats()
-    {
-        $list_gchats = Chats::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->get()->groupBy('gchat_id');
-        foreach ($list_gchats as $key => $value) {
-            $this->chats_list[$key] = $value->first()->gchats()->first();
+        foreach ($this->chats_list as $key => $chat_list) {
+            foreach ($chat_list->user as $key2 => $user) {
+                if ($user->id != Auth::user()->id) {
+                    $this->user_list[$key] = $user;        
+                }
+            }
         }
+        
     }
     public function render()
     {

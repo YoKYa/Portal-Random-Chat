@@ -17,6 +17,7 @@ class CreateGchatsTable extends Migration
         Schema::create('user_chat', function (Blueprint $table) {
             $table->bigInteger('user_id');
             $table->bigInteger('gchat_id');
+            $table->timestamps();
             $table->primary(['user_id', 'gchat_id']);
         });
     }

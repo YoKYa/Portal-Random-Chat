@@ -8,7 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chats extends Model
 {
+    protected $fillable = ['gchat_id', 'user_id', 'body'];
     use HasFactory;
+    public function getPublishedAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

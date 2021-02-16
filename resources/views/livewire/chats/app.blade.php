@@ -77,36 +77,63 @@
                 </div>
 
             </div>
-            {{-- Chat --}}
+            {{-- GChat --}}
             <div class="fixed h-full border-r-2 border-blue-500 pb-28 w-3/12">
                 <div class="overflow-y-auto h-full w-full mr-2" id="journal-scroll">
-                    @foreach ($chats_list as $item)
-                    <div class="border-b-2 border-white h-20 bg-blue-200">
-                        {{ $item->id }}
+                    @foreach ($user_list as $user)
+                    <div class="border-b-2 border-white h-20 bg-blue-200" wire:poll>
+                        <div class="font-semibold mx-2 py-4">
+                            {{ $user['name'] }}
+                            {{ $user['id'] }}
+                        </div>
                     </div>
                     @endforeach
                 </div>
             </div>
         </div>
         <div class="w-9/12 bg-blue-700">
-            <div class="h-12 text-white">
-                Topi
+            <div class="h-12 text-white flex justify-between">
+                <div class="flex items-center mx-3">Yogi Eka Prastiya - YoKYa</div>
+                <div class="flex items-center mx-3">
+                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                    </svg></div>
             </div>
             <div class="h-auto bg-blue-200">
                 <div class="fixed h-full pb-28 w-9/12">
-                    <div class="hover:overflow-y-auto h-full w-full mr-2 pb-16" id="journal-scroll">
-                        <div class="rounded-lg bg-blue-300 w-auto h-auto border-blue-500 border-2">
-                            hahah
+                    <div class="overflow-y-auto h-full w-full mr-2 pb-16 flex flex-col-reverse" id="journal-scroll">
+                        <div class="flex items-center pr-10">
+                            <div class="flex flex-col m-4">
+                                <div class="font-semibold ml-2 my-1">Yogi Eka Prastiya</div>
+                                <div class="w-auto h-auto bg-blue-600 text-white px-3 py-1 rounded-2xl">
+                                    <div class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Quisquam mollitia voluptatum commodi ipsam iusto. Unde nam, ex quasi incidunt
+                                        qui eius ipsum aspernatur quia beatae expedita nobis magnam, sed laboriosam.
+                                    </div>
+                                    <div class="text-xs mt-3">1</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="rounded-lg bg-blue-100 w-auto h-auto border-blue-500 border-2">
-                            XD
+                        <div class="flex justify-end pt-2 pl-10">
+                            <div class="flex flex-col m-4">
+                                <div class="w-auto h-auto bg-blue-900 text-white px-3 py-1 rounded-2xl">
+                                    <div class="text-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Quisquam mollitia voluptatum commodi ipsam iusto. Unde nam, ex quasi incidunt
+                                        qui eius ipsum aspernatur quia beatae expedita nobis magnam, sed laboriosam.
+                                    </div>
+                                    <div class="text-xs mt-3 text-right">2</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="w-full bottom-0 fixed">
                 <div class="flex w-full">
-                    <div class="w-7/12 rounded-lg mx-8 my-5 py-4 px-5 bg-white">Input</div>
+                    <textarea class="form-textarea resize-none w-7/12 rounded-lg mx-8 my-5 py-1 px-5 bg-white"
+                        id="journal-scroll" maxlength="255"></textarea>
                     <div class="bg-blue-300 rounded-lg ml-2 my-5 py-4 w-1/12 flex justify-center">Kirim</div>
                 </div>
             </div>
