@@ -14,7 +14,7 @@
               <p>Karena Recehin merupakan aplikasi yang bisa menjadi sarana hiburan untuk pengguna. 
                 ketika anda merasa bosan, Anda bisa memulai percakapan random dan saling berbalas pesan melalui aplikasi recehin</p>
               <br>
-              <p><b>Jadi Tunggu Apa Lagi ???</b></p>
+              <p><b>Jadi Tunggu Apa Lagi ????</b></p>
                 <button class="bg-black rounded-md py-3 px-7 mt-6 text-white">START</button>
             </div>
           </div>
