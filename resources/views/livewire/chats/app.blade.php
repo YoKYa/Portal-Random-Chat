@@ -30,7 +30,7 @@
         }
     </style>
     @section('title', 'Chats')
-    <div class="flex">
+    <div class="flex" x-data="{ add: false }">
         <div class="w-3/12 bg-blue-700 border-blue-500 border-r-2">
             {{-- Top Chat --}}
             <div class="h-12 text-white antialiased text-sm flex items-center justify-between">
@@ -61,34 +61,24 @@
                     </div>
                     <div
                         class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input type="checkbox" name="toggle" id="toggle"
-                            class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer" />
+                        <input type="checkbox" id="toggle"
+                            class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                            wire:model="on_random" />
                         <label for="toggle"
                             class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-300 cursor-pointer"></label>
                     </div>
                     <div>|</div>
-                    <div class="mx-2">
+                    <button class="mx-2 focus:outline-none" @click="add = !add">
                         <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                    </div>
+                    </button>
                 </div>
-
             </div>
-            {{-- GChat --}}
             <div class="fixed h-full border-r-2 border-blue-500 pb-28 w-3/12">
-                <div class="overflow-y-auto h-full w-full mr-2" id="journal-scroll">
-                    @foreach ($user_list as $user)
-                    <div class="border-b-2 border-white h-20 bg-blue-200" wire:poll>
-                        <div class="font-semibold mx-2 py-4">
-                            {{ $user['name'] }}
-                            {{ $user['id'] }}
-                        </div>
-                    </div>
-                    @endforeach
-                </div>
+                @livewire('chats.chat')
             </div>
         </div>
         <div class="w-9/12 bg-blue-700">
@@ -138,12 +128,46 @@
                 </div>
             </div>
         </div>
+        <div class="fixed h-screen w-full bg-black bg-opacity-70" :class="{ 'hidden': !add }">
+            <div class="bg-white shadow-lg mx-auto w-1/3 h-auto mt-16 rounded-md">
+                <div class="pt-2 mx-3 mb-3 text-2xl flex justify-end" @click="add = !add">
+                    <button class="focus:outline-none">
+                        <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </button>
+                </div>
+                {{-- belum --}}
+                @livewire('chats.generate', ['on_random' => $on_random]) 
+                
+                <div class="h-1 bg-gray-400 mx-12 rounded-md my-2"></div>
+                <div class="w-full flex justify-start  items-center ml-12">
+                    <div>
+                        Random
+                    </div>
+                    <div
+                        class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in ml-5">
+                        <input type="checkbox" id="toggle"
+                            class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer"
+                            wire:model="on_random" />
+                        <label for="toggle"
+                            class="toggle-label block overflow-hidden h-4 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                </div>
+                <div class="text-sm text-red-700 mx-12">If Random on, you get automatically chat in one time.</div>
+                <div class="h-1 bg-gray-400 mx-12 rounded-md my-2"></div>
+                @livewire('chats.username')
+                <div class="text-sm text-red-700 mx-12 -my-2 pb-5">Search username to chat.</div>
+            </div>
+        </div>
     </div>
+
 
     @push('scripts')
     <script type="text/javascript">
         document.addEventListener("livewire:load", function(event) {
-            window.livewire.emit('load_chats');
         });
     </script>
     @endpush

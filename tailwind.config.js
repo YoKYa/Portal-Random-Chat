@@ -6,7 +6,19 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
+            
         },
+        cursor: {
+            auto: 'auto',
+            default: 'default',
+            pointer: 'pointer',
+            wait: 'wait',
+            text: 'text',
+            move: 'move',
+            'not-allowed': 'not-allowed',
+            crosshair: 'crosshair',
+            'zoom-in': 'zoom-in',
+        }
     },
     variants: {
         extend: {
@@ -14,6 +26,7 @@ module.exports = {
             opacity: ['disabled'],
             overflow: ['hover', 'focus'],
             padding: ['hover', 'focus'],
+            cursor: ['hover', 'focus'],
         }
     },
     purge: {

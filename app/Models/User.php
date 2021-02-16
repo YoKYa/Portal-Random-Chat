@@ -21,6 +21,7 @@ class User extends Authenticatable
         'username',
         'hash',
         'picture',
+        'on_random'
     ];
 
     protected $hidden = [
@@ -39,7 +40,6 @@ class User extends Authenticatable
     {
         if ($gchats ==  null) {
             $gchats = Gchats::create();
-
         }
         if ($user !=  null) {
             $user->gchats()->save($gchats);
@@ -54,7 +54,7 @@ class User extends Authenticatable
         $this->gchats()->save($gchats);
         $this->chats()->create([
             'gchat_id' => $gchats->id,
-            'user_id' => Auth::user()->id,
+            'user_id' => $this->id,
             'body' => "bAdmin",
             'created_at' => now(),
             'updated_at' => now(),

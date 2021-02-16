@@ -20,7 +20,8 @@
         </div>
         <div :class="{'hidden': !open}" class="leading-relaxed md:flex justify-between w-full items-center z-10">
             <div class="flex md:items-center flex-col md:flex-row border-b border-gray-200 md:border-b-0 py-2 md:py-0">
-                <a href="{{ route('chats.app') }}" class="block text-gray-300 hover:text-white px-4 md:py-4 flex items-center">
+                <a href="{{ route('chats.app') }}" class="block @if (Request::is('chats')) text-white @else text-gray-300 @endif hover:text-white px-4 md:py-4 flex items-center active:text-white">
+                    
                     <div>
                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                             <path fill-rule="evenodd"

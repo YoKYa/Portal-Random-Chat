@@ -10,29 +10,19 @@ use Illuminate\Support\Facades\Auth;
 
 class App extends Component
 {
-    public $chats_list = [];
-    public $user_list = [];
-    // protected $listeners = [
-    //     'load_chats' => 'loadChats',
-    //     'load_chat' => 'loadChat',
-    // ];
-    public function mount()
-    {
-        $ids = Auth::user()->gchats()->pluck('id');
-        $ids->push(auth()->id());
-        $chats = Chats::WhereIn('gchat_id',$ids)->latest()->get()->groupBy('gchat_id');
-        foreach ($chats as $key => $value) {
-            $this->chats_list[$key] = $value->first()->gchats()->first();
-        }
+    public $on_random;
 
-        foreach ($this->chats_list as $key => $chat_list) {
-            foreach ($chat_list->user as $key2 => $user) {
-                if ($user->id != Auth::user()->id) {
-                    $this->user_list[$key] = $user;        
-                }
-            }
+    public function updated($field)
+    {
+        if ($field == "on_random") {
+            Auth::user()->update([
+                'on_random' => $this->on_random
+            ]);
         }
-        
+    }
+    public function hydrate()
+    {
+        $this->on_random = Auth::user()->on_random;
     }
     public function render()
     {
