@@ -4,14 +4,23 @@ namespace App\Http\Livewire\Chats;
 
 use App\Models\User;
 use Livewire\Component;
-use App\Models\Chats\Chats;
-use App\Models\Chats\Gchats;
+
 use Illuminate\Support\Facades\Auth;
 
 class App extends Component
 {
     public $on_random;
-
+    public $h1 = "";
+    public $h2 = "hidden sm:hidden";
+    protected $listeners = [
+        'm',
+    ];
+    public function m()
+    {
+        $temp = $this->h1;
+        $this->h1 = $this->h2;
+        $this->h2 = $temp;
+    }
     public function updated($field)
     {
         if ($field == "on_random") {

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Gchats extends Model
 {
     use HasFactory;
-    protected $fillable = ['code','type'];
+    protected $fillable = ['code','type','updated_at'];
     public function user()
     {
         return $this->belongsToMany(User::class,'user_chat','gchat_id','user_id');

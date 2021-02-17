@@ -30,8 +30,8 @@
         }
     </style>
     @section('title', 'Chats')
-    <div class="flex" x-data="{ add: false }">
-        <div class="w-3/12 bg-blue-700 border-blue-500 border-r-2">
+    <div class="flex" x-data="{ add: false }" x-data="{ bil: false }">
+        <div class="md:w-4/12 w-full bg-blue-700 border-blue-500 border-r-2 md:block {{ $h1 }}">
             {{-- Top Chat --}}
             <div class="h-12 text-white antialiased text-sm flex items-center justify-between">
                 <div class="mx-3 flex items-center font-semibold tracking-widest">
@@ -75,61 +75,28 @@
                                 d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </button>
-                </div>
-            </div>
-            <div class="fixed h-full border-r-2 border-blue-500 pb-28 w-3/12">
-                @livewire('chats.chat')
-            </div>
-        </div>
-        <div class="w-9/12 bg-blue-700">
-            <div class="h-12 text-white flex justify-between">
-                <div class="flex items-center mx-3">Yogi Eka Prastiya - YoKYa</div>
-                <div class="flex items-center mx-3">
-                    <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-                    </svg></div>
-            </div>
-            <div class="h-auto bg-blue-200">
-                <div class="fixed h-full pb-28 w-9/12">
-                    <div class="overflow-y-auto h-full w-full mr-2 pb-16 flex flex-col-reverse" id="journal-scroll">
-                        <div class="flex items-center pr-10">
-                            <div class="flex flex-col m-4">
-                                <div class="font-semibold ml-2 my-1">Yogi Eka Prastiya</div>
-                                <div class="w-auto h-auto bg-blue-600 text-white px-3 py-1 rounded-2xl">
-                                    <div class="text-left">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Quisquam mollitia voluptatum commodi ipsam iusto. Unde nam, ex quasi incidunt
-                                        qui eius ipsum aspernatur quia beatae expedita nobis magnam, sed laboriosam.
-                                    </div>
-                                    <div class="text-xs mt-3">1</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="flex justify-end pt-2 pl-10">
-                            <div class="flex flex-col m-4">
-                                <div class="w-auto h-auto bg-blue-900 text-white px-3 py-1 rounded-2xl">
-                                    <div class="text-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Quisquam mollitia voluptatum commodi ipsam iusto. Unde nam, ex quasi incidunt
-                                        qui eius ipsum aspernatur quia beatae expedita nobis magnam, sed laboriosam.
-                                    </div>
-                                    <div class="text-xs mt-3 text-right">2</div>
-                                </div>
-                            </div>
+                    <div class="md:hidden absolute bg-blue-500 bottom-8 w-12 h-12 flex items-center justify-center rounded-full right-8 hover:cursor-pointer z-40" wire:click="m">
+                        <div class="mx-3 " >
+                            <svg class="w-10 h-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="w-full bottom-0 fixed">
-                <div class="flex w-full">
-                    <textarea class="form-textarea resize-none w-7/12 rounded-lg mx-8 my-5 py-1 px-5 bg-white"
-                        id="journal-scroll" maxlength="255"></textarea>
-                    <div class="bg-blue-300 rounded-lg ml-2 my-5 py-4 w-1/12 flex justify-center">Kirim</div>
-                </div>
+            <div class="fixed h-full border-r-2 border-blue-500 pb-28 md:w-4/12 w-full">
+                @livewire('chats.chat')
             </div>
         </div>
+        <div class="md:w-8/12 w-full bg-blue-700 md:block {{ $h2 }}">
+            @livewire('chats.chatting')
+        </div>
+
+        {{-- Tombol Generate --}}
         <div class="fixed h-screen w-full bg-black bg-opacity-70" :class="{ 'hidden': !add }">
-            <div class="bg-white shadow-lg mx-auto w-1/3 h-auto mt-16 rounded-md">
+            <div class="bg-white shadow-lg mx-auto md:w-1/3 w-10/12 h-auto mt-16 rounded-md">
                 <div class="pt-2 mx-3 mb-3 text-2xl flex justify-end" @click="add = !add">
                     <button class="focus:outline-none">
                         <svg class="w-8 h-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -139,9 +106,8 @@
                         </svg>
                     </button>
                 </div>
-                {{-- belum --}}
-                @livewire('chats.generate', ['on_random' => $on_random]) 
-                
+                @livewire('chats.generate', ['on_random' => $on_random])
+
                 <div class="h-1 bg-gray-400 mx-12 rounded-md my-2"></div>
                 <div class="w-full flex justify-start  items-center ml-12">
                     <div>
@@ -163,7 +129,6 @@
             </div>
         </div>
     </div>
-
 
     @push('scripts')
     <script type="text/javascript">

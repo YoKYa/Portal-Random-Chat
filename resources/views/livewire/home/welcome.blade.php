@@ -18,27 +18,34 @@
     @auth
     <div class="mb-7">
         <div class="md:flex md:items-center md:justify-center my-3">
-            <form action="#" wire:submit.prevent="join">
+            <form wire:submit.prevent="join_username">
                 <div class="rounded-md bg-white shadow-md py-5 px-10 mx-3 ">
-                    <input type="text" placeholder="Insert Code" wire:model="code" class="w-full border-gray-300 rounded-md" required>
+                    <input type="text" placeholder="Insert Username" wire:model="code"
+                        class="w-full border-gray-300 rounded-md" required>
                     <button
-                        class="w-full bg-blue-600 hover:bg-blue-700 text-white transition duration-200 rounded-md mt-3 py-2 disabled:opacity-50 disabled:bg-blue-800 @error('code') cursor-not-allowed @enderror" @error('code') disabled @enderror>Join</button>
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white transition duration-200 rounded-md mt-3 py-2 disabled:opacity-50 disabled:bg-blue-800 @error('code') cursor-not-allowed @enderror"
+                        @error('code') disabled @enderror>Join</button>
                 </div>
             </form>
         </div>
 
         <div class="md:flex justify-center items-center">
-            <div class=" block md:flex w-auto rounded-md bg-white shadow-md py-5 px-20 my-3 mx-3 items-center justify-center md:w-2/6">
-                <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <a href="{{ Route('chats.app') }}"
+                class=" block md:flex w-auto rounded-md bg-white shadow-md py-5 px-20 my-3 mx-3 items-center justify-center md:w-2/6">
+                <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
                 </svg>
                 Random Chat
-            </div>
-            <div class=" block md:flex w-auto rounded-md bg-white shadow-md py-5 px-20 my-3 mx-3 items-center justify-center md:w-2/6">
-                <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
+            </a>
+            <div
+                class=" block md:flex w-auto rounded-md bg-gray-500 shadow-md py-5 px-20 my-3 mx-3 items-center justify-center md:w-2/6 hover:cursor-not-allowed">
+                <svg class="w-5 h-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
                 Random Group
             </div>
         </div>
@@ -61,6 +68,16 @@
         </div>
     </div>
 
+    @endif
+    @if (session()->has('message'))
+    <div class="absolute bg-green-100 text-green-800 border-l-4 border-green-500 mt-4 ml-5 top-20 left-5 p-3 w-auto text-left">
+        {{ session('message') }}
+    </div>
+    @endif
+    @if(session()->has('error'))
+    <div class="absolute bg-red-100 text-red-800 border-l-4 border-red-500 mt-4 ml-5 top-20 left-5 p-3 w-auto text-left">
+        {{ session('error') }}
+    </div>
     @endif
     @error('code')
     <div

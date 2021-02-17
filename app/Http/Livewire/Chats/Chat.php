@@ -2,15 +2,18 @@
 
 namespace App\Http\Livewire\Chats;
 
+use App\Models\Chats\Chats;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
 class Chat extends Component
 {
     public $gchats;
+    public $select;
     public function getGchat($id)
     {
-        dd($id);
+        $this->select = $id;
+        $this->emit('chat', $id);
     }
     public function hydrate()
     {
