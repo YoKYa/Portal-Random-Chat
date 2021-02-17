@@ -34,7 +34,7 @@
 
         </div>
         <div :class="{ 'hidden': !ops }"
-            class="md:absolute md:top-0 md:right-0 md:mr-4 md:mt-28 md:bg-blue-800 md:w-56 md:rounded md:shadow py-1 mb-2 md:mb-0 md:py-3 z-10">
+            class="absolute md:top-0 right-0 mr-4 md:mt-28 mt-2 mr-16 md:bg-blue-800 md:w-56 md:rounded md:shadow py-1 mb-2 md:mb-0 md:py-3 z-10">
             <div class="block text-gray-300 hover:text-white px-4 md:ml-0 ml-12 hover:cursor-pointer"
                 wire:click="delete">Delete Chat</div>
         </div>
@@ -42,6 +42,7 @@
     <div class="h-auto bg-blue-200">
         <div class="fixed h-full pb-28 md:w-8/12 w-full">
             <div class="overflow-y-auto h-full w-full mr-2 pb-16 flex flex-col-reverse bg-blue-200" id="journal-scroll">
+
                 @if (!empty($list))
                 @foreach ($list as $chat)
                 @if ($chat->user_id == auth()->id())
@@ -78,6 +79,8 @@
                 </div>
                 @endif
                 @endforeach
+                @else
+                You dont have any chat
                 @endif
             </div>
         </div>
