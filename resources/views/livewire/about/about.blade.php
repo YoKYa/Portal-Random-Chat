@@ -8,13 +8,16 @@
             <div class="mb-auto mt-auto max-w-lg">
               <h1 class="text-3xl uppercase">Recehin</h1>
               <p class="font-semibold mb-5">Open Chat Portal</p>
-              <p>Recehin adalah aplikasi chatting yang bersifat open chat bagi siapa saja. Recehin memiliki tujuan untuk memberantas kebosanan pengguna.</p>
+              <p>Recehin adalah sebuah portal chat terbuka yang bisa digunakan secara gratis. 
+                Pengguna bisa bikin akun secara gratis, yang nanti bisa digunakan untuk berkomunikasi dengan pengguna lainnya.
+                Aplikasi ini diluncurkan pada tanggal 18 Februari 2021 oleh tim Terereret yang beranggotakan 3 orang, 
+                yaitu Muhammad Amien, Yogi Eka Prastiya, dan Hawwina Aunil Azifa.</p>
               <br>
-              <p><b> Kenapa harus "Recehin" ?</b></p>
-              <p>Karena Recehin merupakan aplikasi yang bisa menjadi sarana hiburan untuk pengguna. 
-                ketika anda merasa bosan, Anda bisa memulai percakapan random dan saling berbalas pesan melalui aplikasi recehin</p>
+              <p>Recehin ini bersifat open chat bagi siapa saja, yang digunakan untuk mencari teman baru dan juga kenalan baru. 
+                Recehin memungkinkan pengguna untuk saling terhubung dan bertukar pesan dengan pengguna lainnya secara GRATIS. </p>
+              <p>Aplikasi Recehin tidak hanya bisa diakses melalui komputer saja lo, tapi juga bisa diakses melalui smartphone kesayangan anda.</p>
               <br>
-              <p><b>Jadi Tunggu Apa Lagi ????</b></p>
+              <p><b>Jadi... Tunggu Apa Lagi ????</b></p>
                 <button class="bg-black rounded-md py-3 px-7 mt-6 text-white">START</button>
             </div>
           </div>
