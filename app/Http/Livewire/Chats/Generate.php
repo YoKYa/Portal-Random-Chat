@@ -6,12 +6,15 @@ use App\Models\User;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
 
+use function PHPUnit\Framework\isEmpty;
+
 class Generate extends Component
 {
+    public $on_random;
     public function generate()
     {
         $user = User::where('on_random', '=', true)->get();
-        if ($user->first() == null) {
+        if ( count($user) == 0) {
             session()->flash('message_error', 'Generate Fail (Not Found).');
         } else {
             $user = $user->pluck('id');
