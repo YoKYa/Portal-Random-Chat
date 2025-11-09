@@ -19,27 +19,6 @@ Tidak perlu refresh halaman — chatting realtime dengan Livewire!
 | 🚪 End Chat / Next | Tinggalkan chat & cari partner baru |
 | 🧩 Live UI Update | Data berubah tanpa reload (Livewire realtime) |
 
----
-
-## 🖥️ Tampilan Aplikasi (Screenshots)
-
-> **Home (Landing Page)**  
-> Chatting dengan random people +62  
-> ![Landing Page](docs/landing.png)
-
-> **Dashboard Random Chat**  
-> ![Random Chat](docs/random-chat.png)
-
-> **Popup Create / Join Room**  
-> ![Generate Chat](docs/generate-chat.png)
-
-> **Group Chat Random**  
-> ![Group Chat](docs/group-chat.png)
-
-> **Dual Instance Test (Realtimely update)**  
-> ![Dual Instance](docs/dual-instance.png)
-
-> *(catatan: screenshot otomatis ini dibuat berdasarkan tampilan saat user upload di ChatGPT)*
 
 ---
 
