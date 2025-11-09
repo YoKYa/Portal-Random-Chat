@@ -1,62 +1,161 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 💬 Portal Random Chat (Laravel)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Portal Random Chat adalah aplikasi chat anonim berbasis **Laravel** yang mempertemukan pengguna secara **acak (random matching)** untuk mengobrol secara realtime. Cocok untuk eksperimen realtime, tugas kampus, atau proof‑of‑concept social chat.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## ✨ Fitur Utama
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- 🔀 **Random Match** — menemukan partner chat secara acak (1‑on‑1).
+- 💬 **Realtime Messaging** — kirim & terima pesan tanpa reload (Laravel Echo + Pusher/Laravel WebSockets).
+- 👤 **Auth** — Registrasi, Login, Logout (Laravel Breeze/Fortify/Jetstream – sesuaikan dengan repo).
+- 🟢 **Presence / Online Status** *(opsional)* — tampilkan status online/typing.
+- 📦 **Queue & Broadcast** — skalabel untuk banyak koneksi.
+- 🗑️ **End Session** — akhiri percakapan & cari partner baru.
+- 🔒 **Moderasi dasar** *(opsional)* — lapor/blokir pengguna.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+> Catatan: Sesuaikan opsi (Breeze/Jetstream/Fortify, Pusher/WebSockets, Queue driver) dengan konfigurasi di repository Anda.
 
-## Learning Laravel
+---
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🧰 Teknologi
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- **Framework**: Laravel (10/11/12)  
+- **Realtime**: Pusher / Laravel WebSockets + Laravel Echo  
+- **Database**: MySQL / MariaDB / PostgreSQL (sesuaikan)  
+- **Cache/Queue**: Redis / database queue (opsional)  
+- **Frontend**: Blade / Inertia + Vue/React (bergantung implementasi repo)
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## ✅ Prasyarat
 
-### Premium Partners
+- PHP >= 8.1
+- Composer
+- MySQL/MariaDB/PostgreSQL
+- Node.js & npm
+- (Opsional) Redis
+- Akun **Pusher** atau **Laravel WebSockets** terpasang
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/)**
-- **[OP.GG](https://op.gg)**
+---
 
-## Contributing
+## 🚀 Quick Start
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+# 1) Clone repo
+git clone https://github.com/YoKYa/Portal-Random-Chat.git
+cd Portal-Random-Chat
 
-## Code of Conduct
+# 2) Install dependency
+composer install
+cp .env.example .env
+php artisan key:generate
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+# 3) Set DB di .env lalu migrate & seed bila tersedia
+php artisan migrate --seed
 
-## Security Vulnerabilities
+# 4) (Opsional) Instal frontend & build assets
+npm install
+npm run dev   # atau: npm run build
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+# 5) Set driver broadcast (Pusher/WebSockets) di .env lalu jalankan
+php artisan serve
+# Jika pakai queue
+php artisan queue:work
 
-## License
+# Jika pakai Laravel WebSockets
+php artisan websockets:serve
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## ⚙️ Contoh Konfigurasi `.env` (sesuaikan)
+
+```env
+APP_NAME="Portal Random Chat"
+APP_ENV=local
+APP_KEY=base64:GENERATE_ME
+APP_URL=http://localhost
+
+LOG_CHANNEL=stack
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=portal_random_chat
+DB_USERNAME=root
+DB_PASSWORD=
+
+BROADCAST_DRIVER=pusher
+CACHE_STORE=redis
+QUEUE_CONNECTION=database
+SESSION_DRIVER=file
+
+# Pusher (jika memakai Pusher)
+PUSHER_APP_ID=your_app_id
+PUSHER_APP_KEY=your_app_key
+PUSHER_APP_SECRET=your_app_secret
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=ap1
+
+# Laravel WebSockets (alternatif Pusher self‑hosted)
+LARAVEL_WEBSOCKETS_ENABLED=true
+LARAVEL_WEBSOCKETS_HOST=127.0.0.1
+LARAVEL_WEBSOCKETS_PORT=6001
+```
+
+> Gunakan **salah satu**: Pusher **atau** Laravel WebSockets. Pastikan `bootstrap.js` / file Echo Anda mengarah ke konfigurasi yang benar (key, host, cluster/port).
+
+---
+
+## 🧪 Alur Penggunaan
+
+1. **Register / Login** ke aplikasi.
+2. Klik **Find Partner / Start** untuk masuk ke antrian.
+3. Sistem melakukan **random matching** → jika ada lawan bicara, ruangan chat dibentuk.
+4. **Kirim pesan** realtime, tampilkan status typing/online (jika diaktifkan).
+5. **End/Next** untuk mengakhiri & mencari partner baru.
+
+---
+
+## 🔐 Keamanan & Privasi (Saran)
+
+- Gunakan **rate limiting** pada endpoint pesan & match.
+- Sanitasi input, hindari XSS/HTML injection pada pesan.
+- Tambahkan **report/block** bila diperlukan.
+- Pakai **HTTPS** di production dan kunci kredensial Pusher/WebSockets.
+
+---
+
+## 🛣️ Roadmap (Opsional)
+
+- Match by interest (tag/keyword)
+- Grup chat anonim
+- Pesan berformat (emoji, gambar dengan storage)
+- Notifikasi push (PWA / FCM)
+- Moderation/Abuse detection
+
+---
+
+## 🤝 Kontribusi
+
+- Fork → buat branch fitur → Pull Request
+- Sertakan deskripsi jelas & langkah uji
+
+```bash
+git checkout -b feat/nama-fitur
+git commit -m "feat: tambah fitur X"
+git push origin feat/nama-fitur
+```
+
+---
+
+## 📜 Lisensi
+
+Rilis dengan **MIT License** — bebas digunakan & dimodifikasi.
+
+---
+
+Jika repo ini bermanfaat, jangan lupa **⭐ Star** ya!
