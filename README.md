@@ -1,41 +1,40 @@
-# 💬 Portal Random Chat (Laravel)
+# 💬 Portal Random Chat (Laravel + Livewire)
 
-Portal Random Chat adalah aplikasi chat anonim berbasis **Laravel** yang mempertemukan pengguna secara **acak (random matching)** untuk mengobrol secara realtime. Cocok untuk eksperimen realtime, tugas kampus, atau proof‑of‑concept social chat.
+Portal Random Chat adalah aplikasi chat anonim berbasis **Laravel** yang mempertemukan pengguna secara **acak (random matching)** untuk mengobrol **real‑time**.  
+Repositori ini menggunakan **Livewire** untuk membangun UI reaktif tanpa perlu menulis banyak JavaScript.
 
 ---
 
 ## ✨ Fitur Utama
 
 - 🔀 **Random Match** — menemukan partner chat secara acak (1‑on‑1).
-- 💬 **Realtime Messaging** — kirim & terima pesan tanpa reload (Laravel Echo + Pusher/Laravel WebSockets).
-- 👤 **Auth** — Registrasi, Login, Logout (Laravel Breeze/Fortify/Jetstream – sesuaikan dengan repo).
-- 🟢 **Presence / Online Status** *(opsional)* — tampilkan status online/typing.
-- 📦 **Queue & Broadcast** — skalabel untuk banyak koneksi.
-- 🗑️ **End Session** — akhiri percakapan & cari partner baru.
-- 🔒 **Moderasi dasar** *(opsional)* — lapor/blokir pengguna.
+- 💬 **Live Chat** — pesan real‑time via **Livewire Events** (+ opsi Broadcast/Pusher/WebSockets).
+- 👤 **Auth** — registrasi, login, logout (sesuaikan dengan implementasi repo).
+- 🟢 **Status/Typing** *(opsional)* — indikator online & mengetik.
+- 🗑️ **End/Next** — akhiri sesi & cari partner baru.
+- 🛡️ **Moderasi dasar** *(opsional)* — lapor/blokir.
 
-> Catatan: Sesuaikan opsi (Breeze/Jetstream/Fortify, Pusher/WebSockets, Queue driver) dengan konfigurasi di repository Anda.
+> Catatan: Gunakan **broadcasting** (Pusher/Laravel WebSockets) bila ingin skalabilitas realtime lintas proses/worker. Tanpa broadcasting, Livewire tetap dapat menangani interaksi via polling/diff update bawaan Livewire.
 
 ---
 
 ## 🧰 Teknologi
 
-- **Framework**: Laravel (10/11/12)  
-- **Realtime**: Pusher / Laravel WebSockets + Laravel Echo  
-- **Database**: MySQL / MariaDB / PostgreSQL (sesuaikan)  
-- **Cache/Queue**: Redis / database queue (opsional)  
-- **Frontend**: Blade / Inertia + Vue/React (bergantung implementasi repo)
+- **Laravel** (10/11/12 — sesuaikan repo)
+- **Livewire** (v3/v2 — sesuaikan repo)
+- **Database**: MySQL/MariaDB/PostgreSQL
+- **Broadcasting (opsional)**: Pusher / Laravel WebSockets + Laravel Echo
+- **Build assets**: Vite (npm)
 
 ---
 
 ## ✅ Prasyarat
 
-- PHP >= 8.1
+- PHP ≥ 8.1
 - Composer
-- MySQL/MariaDB/PostgreSQL
 - Node.js & npm
-- (Opsional) Redis
-- Akun **Pusher** atau **Laravel WebSockets** terpasang
+- MySQL/MariaDB/PostgreSQL
+- (Opsional) Redis + Pusher / Laravel WebSockets
 
 ---
 
@@ -51,25 +50,26 @@ composer install
 cp .env.example .env
 php artisan key:generate
 
-# 3) Set DB di .env lalu migrate & seed bila tersedia
+# 3) Konfigurasi database di .env, lalu migrate (seed jika tersedia)
 php artisan migrate --seed
 
-# 4) (Opsional) Instal frontend & build assets
+# 4) Pasang & build aset frontend
 npm install
-npm run dev   # atau: npm run build
+npm run dev     # atau: npm run build
 
-# 5) Set driver broadcast (Pusher/WebSockets) di .env lalu jalankan
+# 5) Jalankan aplikasi
 php artisan serve
-# Jika pakai queue
-php artisan queue:work
 
-# Jika pakai Laravel WebSockets
-php artisan websockets:serve
+# 6) (Opsional) Realtime broadcast & queue
+php artisan queue:work
+php artisan websockets:serve   # jika memakai Laravel WebSockets
 ```
+
+> **Livewire setup:** pastikan layout memuat `@livewireStyles` dan `@livewireScripts`, serta Vite sudah terpasang. Untuk Livewire v3 dengan Blade + Vite, konfigurasi standar sudah cukup.
 
 ---
 
-## ⚙️ Contoh Konfigurasi `.env` (sesuaikan)
+## ⚙️ Contoh konfigurasi `.env` (sesuaikan)
 
 ```env
 APP_NAME="Portal Random Chat"
@@ -86,63 +86,65 @@ DB_DATABASE=portal_random_chat
 DB_USERNAME=root
 DB_PASSWORD=
 
-BROADCAST_DRIVER=pusher
-CACHE_STORE=redis
-QUEUE_CONNECTION=database
-SESSION_DRIVER=file
+# Livewire bekerja tanpa broadcast driver, tetapi untuk realtime lintas proses gunakan:
+BROADCAST_DRIVER=pusher      # atau: redis / ably / null
+QUEUE_CONNECTION=database    # atau: redis
+CACHE_STORE=redis            # opsional
 
-# Pusher (jika memakai Pusher)
+# Pusher (jika dipakai)
 PUSHER_APP_ID=your_app_id
 PUSHER_APP_KEY=your_app_key
 PUSHER_APP_SECRET=your_app_secret
+PUSHER_APP_CLUSTER=ap1
 PUSHER_HOST=
 PUSHER_PORT=443
 PUSHER_SCHEME=https
-PUSHER_APP_CLUSTER=ap1
 
-# Laravel WebSockets (alternatif Pusher self‑hosted)
+# Laravel WebSockets (alternatif self-hosted)
 LARAVEL_WEBSOCKETS_ENABLED=true
 LARAVEL_WEBSOCKETS_HOST=127.0.0.1
 LARAVEL_WEBSOCKETS_PORT=6001
 ```
 
-> Gunakan **salah satu**: Pusher **atau** Laravel WebSockets. Pastikan `bootstrap.js` / file Echo Anda mengarah ke konfigurasi yang benar (key, host, cluster/port).
+> Gunakan **salah satu**: Pusher **atau** Laravel WebSockets. Pastikan file JS/Vite/Echo (bila digunakan) sesuai dengan kredensial broadcast Anda.
+
+---
+
+## 🧩 Komponen Livewire (contoh penamaan)
+
+- `MatchLobby` — antrian & pencarian partner
+- `ChatRoom` — UI percakapan 1‑on‑1
+- `TypingIndicator` — indikator mengetik
+- `SessionControls` — tombol End/Next
+- `ChatMessageList` & `MessageInput` — list & input pesan
+
+> Sesuaikan dengan struktur komponen pada repository Anda.
 
 ---
 
 ## 🧪 Alur Penggunaan
 
-1. **Register / Login** ke aplikasi.
-2. Klik **Find Partner / Start** untuk masuk ke antrian.
-3. Sistem melakukan **random matching** → jika ada lawan bicara, ruangan chat dibentuk.
-4. **Kirim pesan** realtime, tampilkan status typing/online (jika diaktifkan).
-5. **End/Next** untuk mengakhiri & mencari partner baru.
+1. **Register/Login** ke aplikasi.
+2. Klik **Find Partner/Start** untuk masuk antrian.
+3. Sistem melakukan **random matching** → ruang chat dibuat.
+4. **Berkirim pesan** secara real‑time via Livewire.
+5. Tekan **End/Next** untuk mengakhiri & mencari partner baru.
 
 ---
 
 ## 🔐 Keamanan & Privasi (Saran)
 
-- Gunakan **rate limiting** pada endpoint pesan & match.
-- Sanitasi input, hindari XSS/HTML injection pada pesan.
-- Tambahkan **report/block** bila diperlukan.
-- Pakai **HTTPS** di production dan kunci kredensial Pusher/WebSockets.
-
----
-
-## 🛣️ Roadmap (Opsional)
-
-- Match by interest (tag/keyword)
-- Grup chat anonim
-- Pesan berformat (emoji, gambar dengan storage)
-- Notifikasi push (PWA / FCM)
-- Moderation/Abuse detection
+- Rate‑limit endpoint match & kirim pesan.
+- Escape/sanitasi konten pesan (hindari XSS).
+- Implementasi **report/block** jika diperlukan.
+- Gunakan **HTTPS** di production & jaga kredensial broadcast.
 
 ---
 
 ## 🤝 Kontribusi
 
 - Fork → buat branch fitur → Pull Request
-- Sertakan deskripsi jelas & langkah uji
+- Sertakan deskripsi, langkah uji, dan dampak migrasi (jika ada)
 
 ```bash
 git checkout -b feat/nama-fitur
